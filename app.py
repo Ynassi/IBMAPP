@@ -44,7 +44,7 @@ def sentiment_analyser():
     response = requests.post(f"{NLU_URL}/v1/analyze?version=2021-08-01", json=input_json, headers=headers)
 
     if response.status_code != 200:
-        return jsonify({"Invalid input! Try again."}), 400
+        return jsonify({"error": "Invalid input! Try again."}), 400
 
     response_json = response.json()
     label = response_json.get("sentiment", {}).get("document", {}).get("label")
